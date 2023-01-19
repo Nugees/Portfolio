@@ -1,0 +1,20 @@
+-------Appending the Tables  
+SELECT * FROM dbo.[2018_data]
+UNION
+SELECT * FROM dbo.[2019_Data]
+UNION
+SELECT * FROM dbo.[2020_Data];
+
+--------Created a temp dataset to simplify queries.
+WITH hotel AS (
+SELECT * FROM dbo.[2018_data]
+UNION
+SELECT * FROM dbo.[2019_Data]
+UNION
+SELECT * FROM dbo.[2020_Data])
+
+SELECT * FROM hotel
+LEFT JOIN dbo.market_segment
+ON hotel.market_segment = market_segment.market_segment
+LEFT JOIN dbo.meal_cost
+ON hotel.meal = dbo.meal_cost.meal;
