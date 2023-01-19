@@ -17,6 +17,6 @@ SELECT
 --        ,RIGHT(Games,CHARINDEX(' ', REVERSE(Games))-1) AS 'Season' -- Split column to isolate Season, based on delimiter
         ,[Sport]
         ,[Event]
-        ,CASE WHEN Medal = 'NA' THEN 'Not Registered' ELSE Medal END AS Medal -- Replaced NA with Not Registered
+        ,CASE WHEN Medal = 'NA' THEN 'Not Registered' ELSE Medal END AS Medal
   FROM athletes_event_results
   WHERE RIGHT(Games,CHARINDEX(' ', REVERSE(Games))-1) = 'Summer' -- Where Clause to isolate Summer Season
