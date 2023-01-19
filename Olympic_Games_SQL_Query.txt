@@ -19,4 +19,4 @@ SELECT
         ,[Event]
         ,CASE WHEN Medal = 'NA' THEN 'Not Registered' ELSE Medal END AS Medal
   FROM athletes_event_results
-  WHERE RIGHT(Games,CHARINDEX(' ', REVERSE(Games))-1) = 'Summer' -- Where Clause to isolate Summer Season
+  WHERE RIGHT(Games,CHARINDEX(' ', REVERSE(Games))-1) = 'Summer' -- Where Clause to isolate Summer Season.
