@@ -1,28 +1,3 @@
-----SECTION A
-
------TABLE CREATION---
-
-CREATE TABLE international_breweries(
-SALES_ID INT UNIQUE PRIMARY KEY,
-SALES_REP VARCHAR,
-EMAILS VARCHAR,
-BRANDS VARCHAR,
-PLANT_COST INT,
-UNIT_PRICE INT,
-QUANTITY INT,
-COST INT,
-PROFIT INT,
-COUNTRIES VARCHAR,
-REGION VARCHAR,
-MONTHS VARCHAR,
-YEARS VARCHAR);
-
----LOADING DATA INTO PGADMIN----
-COPY international_breweries
-FROM 'C:\Users\Public\Documents\DataSets\International_Breweries.csv'
-DELIMITER ',' CSV HEADER;
-
-
 SELECT *
 FROM international_breweries;
 
@@ -45,11 +20,6 @@ VALUES ('Benin', 'Francophone'),
 ('Senegal', 'Francophone'),
 ('Togo', 'Francophone');
 
------created table to define anglo and francophone-----
-
-SELECT *
-FROM countries;
-
 --- Compare the total profit between these two territories in order for the territory manager,Mr. Stone made a strategic decision that will aid profit maximization in 2020.---
 
 SELECT language_speaking, SUM(profit) AS "Profit_Made"
@@ -67,7 +37,7 @@ GROUP BY countries
 ORDER BY "Profit Made" DESC
 LIMIT 1;
 
---- Help him find the year with the highest profit.
+--- Find the year with the highest profit.
 
 SELECT years, SUM(profit) as "Profit Made"
 FROM international_breweries
@@ -110,8 +80,6 @@ WHERE countries = 'Senegal'
 GROUP BY brands
 ORDER BY SUM(profit) DESC
 LIMIT 1;
-
------BRAND ANALYSIS
 
 -----Within the last two years, the brand manager wants to know the top three brands consumed in the francophone countries
 
@@ -203,9 +171,6 @@ WHERE countries = 'Nigeria'
 GROUP BY brands, region, months
 ORDER BY "Quantity Consumed" DESC;
 
-
-
------COUNTRY ANALYSIS
 
 -----Country with the highest consumption of beer.1
 SELECT SUM(quantity) as "Quantity of beer Consumed", countries
